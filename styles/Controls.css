@@ -1,0 +1,18 @@
+.controls {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+
+    display: flex;
+    justify-content: space-between;
+
+    height: auto;
+    padding: 10px;
+}
+
+.controls > button {
+    border: 1px solid black;
+    border-radius: 15px;
+    outline: none;
+}

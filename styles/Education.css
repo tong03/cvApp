@@ -1,0 +1,98 @@
+.edContainer {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    padding: 15px;
+
+    height: auto;
+    font-size: 15px;
+    color: black;
+}
+
+.edHead {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.edHead > p {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.edForm.inactive {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: 0.1s ease;
+    height: 0;
+}
+
+.edForm.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+    transition: 0.1s ease;
+    height: fit-content;
+}
+
+.edForm {
+    display: flex;
+    flex-direction: column;
+    /* gap: 3px; */
+
+    height: auto;
+    font-size: 15px;
+}
+
+.edForm > button {
+    align-self: flex-end;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+}
+
+.edForm > input {
+    font-size: 18px;
+    color: white;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 15px;
+    outline: none;
+
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.edForm > input:focus {
+    border: 1px solid white;
+}
+
+.edForm > .duration {
+    display: flex;
+    justify-content: space-between;
+}
+
+.startDate, .endDate {
+    display: flex;
+    flex-direction: column;
+}
+
+#startD, #endD {
+    padding: 10px;
+    font-size: 15px;
+
+    border-radius: 15px;
+    border: 1px solid rgb(118, 118, 118);
+    outline: none;
+}
