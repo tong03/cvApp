@@ -5,3 +5,73 @@
 
     height: 95vh;
 }
+
+/* The code here covers the info section */
+.displayScreen > .infoSection {
+    height: 20%;
+    background-color: darkcyan;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.infoSection > p {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.infoSection > .contactInfo {
+    display: flex;
+    gap: 20px;
+}
+
+.contactInfo > p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* The code here covers the education section */
+.educationSection {
+    height: 40%;
+    background-color: greenyellow;
+    margin-top: -20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.sectionName {
+    width: 80%;
+}
+
+.sectionName > p {
+    margin: 0;
+}
+
+hr.rounded {
+    border-top: 2px solid #bbb;
+    border-radius: 5px;
+}
+
+.sectionContent {
+    display: flex;
+    gap: 60px;
+}
+
+/* The code here covers the work section */
+
+.workSection {
+    height: 40%;
+    background-color: cornflowerblue;
+    margin-top: -20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
