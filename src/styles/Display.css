@@ -73,6 +73,12 @@ hr.rounded {
     margin:0;
 }
 
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 #schoolName {
     font-weight: bold;
 }

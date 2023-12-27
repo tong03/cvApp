@@ -2,9 +2,19 @@ import React from "react";
 import "../styles/Display.css";
 import { useState, useContext } from "react";
 import { InfoContext } from "../contexts/infoContext";
+import { EducationContext } from "../contexts/EducationContext";
 
 const Display = () => {
   const { infoData } = useContext(InfoContext);
+  const { edData } = useContext(EducationContext);
+
+  const formatDate = (dateString) => {
+    const options = { month: "short" };
+    const date = new Date(dateString);
+    const formattedMonth = date.toLocaleString("en-US", options);
+    return `${formattedMonth}, ${date.getFullYear()}`;
+  };
+
   return (
     <div className="displayScreen">
       <div className="infoSection">
@@ -22,12 +32,28 @@ const Display = () => {
 
         <div className="sectionContent">
           <div className="leftContent">
-            <p id="schoolName">University of Southern California</p>
-            <p id="degreeName">Bachelors of Science: Computer Science</p>
+            <p id="schoolName">
+              {edData.schoolName
+                ? edData.schoolName
+                : "University of Southern California"}
+            </p>
+            <p id="degreeName">
+              {edData.degType
+                ? edData.degType
+                : "Bachelors of Science: Computer Science"}
+            </p>
           </div>
           <div className="rightContent">
-            <p>8/2020 - present</p>
-            <p>Los Angeles, CA</p>
+            <p>
+              {edData.startD && edData.endD
+                ? `${formatDate(edData.startD)} - ${formatDate(edData.endD)}`
+                : "8/2020 - present"}
+            </p>
+            <p>
+              {edData.cityName && edData.stateName
+                ? `${edData.cityName}, ${edData.stateName}`
+                : "Los Angeles, CA"}
+            </p>
           </div>
         </div>
       </div>

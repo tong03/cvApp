@@ -1,8 +1,27 @@
 import React from "react";
 import "../styles/Education.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { EducationContext } from "../contexts/EducationContext";
+
 const Education = () => {
+  const { edData, setEdData } = useContext(EducationContext);
   const [open, setOpen] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newEdData = {
+      degType: e.target.elements.degType.value,
+      schoolName: e.target.elements.schoolName.value,
+      cityName: e.target.elements.cityName.value,
+      stateName: e.target.elements.stateName.value,
+      startD: e.target.elements.startD.value,
+      endD: e.target.elements.endD.value,
+    };
+
+    setEdData(newEdData);
+  };
+
   return (
     <div className="edContainer">
       <div className="edHead">
@@ -15,7 +34,10 @@ const Education = () => {
           V
         </button>
       </div>
-      <form className={`edForm ${open ? "active" : "inactive"}`}>
+      <form
+        className={`edForm ${open ? "active" : "inactive"}`}
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="degType">Degree</label>
         <input
           id="degType"
@@ -47,7 +69,7 @@ const Education = () => {
             <input id="endD" type="date"></input>
           </div>
         </div>
-        <button>Save</button>
+        <button onClick={() => setOpen(!open)}>Save</button>
       </form>
     </div>
   );
