@@ -17,25 +17,25 @@ const Work = () => {
         </button>
       </div>
       <form className={`workForm ${open ? "active" : "inactive"}`}>
-        <label for="jobName">Job Title</label>
+        <label htmlFor="jobName">Job Title</label>
         <input id="jobName" type="text" placeholder="Job Title"></input>
 
-        <label for="company">Company</label>
+        <label htmlFor="company">Company</label>
         <input id="company" type="text" placeholder="Company"></input>
 
         <div className="duration">
           <div className="startDate">
-            <label for="startD">Start Date</label>
+            <label htmlFor="startD">Start Date</label>
             <input id="startD" type="date"></input>
           </div>
 
           <div className="endDate">
-            <label for="endD">End Date</label>
+            <label htmlFor="endD">End Date</label>
             <input id="endD" type="date"></input>
           </div>
         </div>
 
-        <label for="jobDescription">Description</label>
+        <label htmlFor="jobDescription">Description</label>
         <input id="jobDescription" type="text" placeholder="Main tasks"></input>
 
         <button>Save</button>

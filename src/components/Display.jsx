@@ -1,15 +1,17 @@
 import React from "react";
 import "../styles/Display.css";
+import { useState, useContext } from "react";
+import { InfoContext } from "../contexts/infoContext";
 
 const Display = () => {
+  const { infoData } = useContext(InfoContext);
   return (
     <div className="displayScreen">
       <div className="infoSection">
-        <p>John Smith</p>
+        <p>{infoData.fullName ? infoData.fullName : "John Smith"}</p>
         <div className="contactInfo">
-          <p>smithj@usc.edu</p>
-          <p>425-901-2003</p>
-          <p>Seattle, WA</p>
+          <p>{infoData.email ? infoData.email : "smithj@usc.edu"}</p>
+          <p>{infoData.phone ? infoData.phone : "425-901-2003"}</p>
         </div>
       </div>
       <div className="educationSection">

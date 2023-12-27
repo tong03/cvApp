@@ -1,18 +1,22 @@
 import React from "react";
 import "../styles/Info.css";
 import { useState, useContext } from "react";
+import { InfoContext } from "../contexts/infoContext.jsx";
 
 const Info = () => {
+  const { infoData, setInfoData } = useContext(InfoContext);
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newFormData = {
+    const newInfoData = {
       fullName: e.target.elements.fName.value,
       email: e.target.elements["e-mail"].value,
       phone: e.target.elements.phoneNum.value,
     };
+
+    setInfoData(newInfoData);
   };
 
   return (
@@ -27,21 +31,42 @@ const Info = () => {
           V
         </button>
       </div>
-      <form className={`infoForm ${open ? "active" : "inactive"}`}>
+      <form
+        className={`infoForm ${open ? "active" : "inactive"}`}
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="fName">Full Name</label>
-        <input type="text" id="fName" placeholder="Full Name Here"></input>
+        <input
+          type="text"
+          id="fName"
+          name="fName"
+          placeholder="Full Name Here"
+        ></input>
 
         <label htmlFor="e-mail">Email</label>
         <input
           id="e-mail"
+          name="e-mail"
           type="email"
           placeholder="johnsmith@gmail.com"
         ></input>
 
         <label htmlFor="phoneNum">Phone Number</label>
-        <input id="phoneNum" type="phone" placeholder="xxx-xxx-xxxx"></input>
+        <input
+          id="phoneNum"
+          name="phoneNum"
+          type="phone"
+          placeholder="xxx-xxx-xxxx"
+        ></input>
 
-        <button onClick={handleSubmit}>Save</button>
+        <button
+          type="submit"
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
+          Save
+        </button>
       </form>
     </div>
   );

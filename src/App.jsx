@@ -10,16 +10,24 @@ import Work from "./components/Work.jsx";
 import { InfoContext } from "./contexts/infoContext.jsx";
 
 function App() {
+  const [infoData, setInfoData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+  });
+
   return (
     <div className="appContainer">
-      <Logo />
-      <div className="contentContainer">
-        <Controls />
-        <Info />
-        <Education />
-        <Work />
-      </div>
-      <Display />
+      <InfoContext.Provider value={{ infoData, setInfoData }}>
+        <Logo />
+        <div className="contentContainer">
+          <Controls />
+          <Info />
+          <Education />
+          <Work />
+        </div>
+        <Display />
+      </InfoContext.Provider>
     </div>
   );
 }

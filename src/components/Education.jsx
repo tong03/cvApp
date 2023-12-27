@@ -16,34 +16,34 @@ const Education = () => {
         </button>
       </div>
       <form className={`edForm ${open ? "active" : "inactive"}`}>
-        <label for="degType">Degree</label>
+        <label htmlFor="degType">Degree</label>
         <input
           id="degType"
           type="text"
           placeholder="Degree/Field of Study"
         ></input>
 
-        <label for="schoolName">School</label>
+        <label htmlFor="schoolName">School</label>
         <input
           id="schoolName"
           type="text"
           placeholder="School/University"
         ></input>
 
-        <label for="cityName">City</label>
+        <label htmlFor="cityName">City</label>
         <input id="cityName" type="text" placeholder="City"></input>
 
-        <label for="stateName">State</label>
+        <label htmlFor="stateName">State</label>
         <input id="stateName" type="text" placeholder="State"></input>
 
         <div className="duration">
           <div className="startDate">
-            <label for="startD">Start Date</label>
+            <label htmlFor="startD">Start Date</label>
             <input id="startD" type="date"></input>
           </div>
 
           <div className="endDate">
-            <label for="endD">End Date</label>
+            <label htmlFor="endD">End Date</label>
             <input id="endD" type="date"></input>
           </div>
         </div>
