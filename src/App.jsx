@@ -7,6 +7,7 @@ import Info from "./components/Info.jsx";
 import Display from "./components/Display.jsx";
 import Education from "./components/Education.jsx";
 import Work from "./components/Work.jsx";
+import { InfoContext } from "./contexts/infoContext.jsx";
 
 function App() {
   return (

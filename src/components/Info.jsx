@@ -1,9 +1,20 @@
 import React from "react";
 import "../styles/Info.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 const Info = () => {
   const [open, setOpen] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newFormData = {
+      fullName: e.target.elements.fName.value,
+      email: e.target.elements["e-mail"].value,
+      phone: e.target.elements.phoneNum.value,
+    };
+  };
+
   return (
     <div className="infoContainer">
       <div className="infoHead">
@@ -17,20 +28,20 @@ const Info = () => {
         </button>
       </div>
       <form className={`infoForm ${open ? "active" : "inactive"}`}>
-        <label for="fName">Full Name</label>
+        <label htmlFor="fName">Full Name</label>
         <input type="text" id="fName" placeholder="Full Name Here"></input>
 
-        <label for="e-mail">Email</label>
+        <label htmlFor="e-mail">Email</label>
         <input
           id="e-mail"
           type="email"
           placeholder="johnsmith@gmail.com"
         ></input>
 
-        <label for="phoneNum">Phone Number</label>
+        <label htmlFor="phoneNum">Phone Number</label>
         <input id="phoneNum" type="phone" placeholder="xxx-xxx-xxxx"></input>
 
-        <button>Save</button>
+        <button onClick={handleSubmit}>Save</button>
       </form>
     </div>
   );
