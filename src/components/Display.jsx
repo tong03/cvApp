@@ -19,8 +19,8 @@ const Display = () => {
 
         <div className="sectionContent">
           <div className="leftContent">
-            <p>University of Southern California</p>
-            <p>Bachelors of Science: Computer Science</p>
+            <p id="schoolName">University of Southern California</p>
+            <p id="degreeName">Bachelors of Science: Computer Science</p>
           </div>
           <div className="rightContent">
             <p>8/2020 - present</p>
@@ -32,6 +32,17 @@ const Display = () => {
         <div className="sectionName">
           <p>Work Experience</p>
           <hr className="rounded"></hr>
+        </div>
+
+        <div className="sectionContent">
+          <div className="leftContent">
+            <p id="jobName">USC Ecological Data Science</p>
+            <p id="jobTitle">Undergraduate Research</p>
+          </div>
+          <div className="rightContent">
+            <p>2/2022 - present</p>
+            <p>Los Angeles, CA</p>
+          </div>
         </div>
       </div>
     </div>
