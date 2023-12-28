@@ -3,10 +3,12 @@ import "../styles/Display.css";
 import { useState, useContext } from "react";
 import { InfoContext } from "../contexts/infoContext";
 import { EducationContext } from "../contexts/EducationContext";
+import { WorkContext } from "../contexts/WorkContext";
 
 const Display = () => {
   const { infoData } = useContext(InfoContext);
   const { edData } = useContext(EducationContext);
+  const { workData } = useContext(WorkContext);
 
   const formatDate = (dateString) => {
     const options = { month: "short" };
@@ -65,12 +67,33 @@ const Display = () => {
 
         <div className="sectionContent">
           <div className="leftContent">
-            <p id="jobName">USC Ecological Data Science</p>
-            <p id="jobTitle">Undergraduate Research</p>
+            <p id="jobName">
+              {workData.jobName
+                ? workData.jobName
+                : "USC Ecological Data Science"}
+            </p>
+            <p id="jobTitle">
+              {workData.company ? workData.company : "Undergraduate Research"}
+            </p>
+            <p id="jobDescription">
+              {workData.jobDescription
+                ? workData.jobDescription
+                : "Something about your job...."}
+            </p>
           </div>
           <div className="rightContent">
-            <p>2/2022 - present</p>
-            <p>Los Angeles, CA</p>
+            <p>
+              {workData.startD && workData.endD
+                ? `${formatDate(workData.startD)} - ${formatDate(
+                    workData.endD
+                  )}`
+                : "8/2020 - present"}
+            </p>
+            <p>
+              {edData.cityName && edData.stateName
+                ? `${edData.cityName}, ${edData.stateName}`
+                : "Los Angeles, CA"}
+            </p>
           </div>
         </div>
       </div>

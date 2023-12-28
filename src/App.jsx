@@ -10,6 +10,7 @@ import Work from "./components/Work.jsx";
 
 import { InfoContext } from "./contexts/infoContext.jsx";
 import { EducationContext } from "./contexts/EducationContext.jsx";
+import { WorkContext } from "./contexts/WorkContext.jsx";
 
 function App() {
   const [infoData, setInfoData] = useState({
@@ -27,19 +28,31 @@ function App() {
     endD: "",
   });
 
+  const [workData, setWorkData] = useState({
+    jobName: "",
+    company: "",
+    startD: "",
+    endD: "",
+    jobDescription: "",
+    stateName: "",
+    cityName: "",
+  });
+
   return (
     <div className="appContainer">
       <InfoContext.Provider value={{ infoData, setInfoData }}>
-        <EducationContext.Provider value={{ edData, setEdData }}>
-          <Logo />
-          <div className="contentContainer">
-            <Controls />
-            <Info />
-            <Education />
-            <Work />
-          </div>
-          <Display />
-        </EducationContext.Provider>
+        <WorkContext.Provider value={{ workData, setWorkData }}>
+          <EducationContext.Provider value={{ edData, setEdData }}>
+            <Logo />
+            <div className="contentContainer">
+              <Controls />
+              <Info />
+              <Education />
+              <Work />
+            </div>
+            <Display />
+          </EducationContext.Provider>
+        </WorkContext.Provider>
       </InfoContext.Provider>
     </div>
   );
