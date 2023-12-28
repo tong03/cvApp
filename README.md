@@ -25,6 +25,7 @@ const ExampleComponent = () => {
   // Access and update infoData as needed
   // ...
 };
+```
 
 By adopting the React Context API, this project promotes a clean and scalable architecture, making it easier to manage and share state across different parts of the application. This results in more maintainable and modular code.
    
