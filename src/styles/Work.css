@@ -97,3 +97,14 @@
 
     margin-bottom: 10px;
 }
+
+.workForm > #jobDescription {
+    font-size: 16px;
+    color: white;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 15px;
+    outline: none;
+
+    padding: 10px;
+    margin-bottom: 10px;
+}

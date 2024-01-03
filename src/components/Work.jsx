@@ -64,7 +64,11 @@ const Work = () => {
         </div>
 
         <label htmlFor="jobDescription">Description</label>
-        <input id="jobDescription" type="text" placeholder="Main tasks"></input>
+        <textarea
+          id="jobDescription"
+          type="text"
+          placeholder="Main tasks"
+        ></textarea>
 
         <button
           onClick={() => {
