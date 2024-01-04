@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 import Logo from "./components/Logo.jsx";
@@ -43,14 +43,14 @@ function App() {
       <InfoContext.Provider value={{ infoData, setInfoData }}>
         <WorkContext.Provider value={{ workData, setWorkData }}>
           <EducationContext.Provider value={{ edData, setEdData }}>
-            <Logo />
+            <Logo className="logo" />
             <div className="contentContainer">
-              <Controls />
-              <Info />
-              <Education />
-              <Work />
+              <Controls id="controls" />
+              <Info id="info" />
+              <Education id="education" />
+              <Work id="work" />
             </div>
-            <Display />
+            <Display className="display" />
           </EducationContext.Provider>
         </WorkContext.Provider>
       </InfoContext.Provider>
