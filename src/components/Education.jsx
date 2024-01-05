@@ -4,7 +4,8 @@ import { useState, useContext } from "react";
 import { EducationContext } from "../contexts/EducationContext";
 
 const Education = () => {
-  const { edData, setEdData } = useContext(EducationContext);
+  const { edData, setEdData, edSubmit, setEdSubmit } =
+    useContext(EducationContext);
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
@@ -20,6 +21,7 @@ const Education = () => {
     };
 
     setEdData(newEdData);
+    setEdSubmit(true);
   };
 
   return (

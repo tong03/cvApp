@@ -4,7 +4,8 @@ import { useState, useContext } from "react";
 import { InfoContext } from "../contexts/infoContext.jsx";
 
 const Info = () => {
-  const { infoData, setInfoData } = useContext(InfoContext);
+  const { infoData, setInfoData, infoSubmit, setInfoSubmit } =
+    useContext(InfoContext);
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
@@ -17,6 +18,7 @@ const Info = () => {
     };
 
     setInfoData(newInfoData);
+    setInfoSubmit(true);
   };
 
   return (

@@ -18,6 +18,7 @@ function App() {
     email: "",
     phone: "",
   });
+  const [infoSubmit, setInfoSubmit] = useState(false);
 
   const [edData, setEdData] = useState({
     degType: "",
@@ -27,6 +28,7 @@ function App() {
     startD: "",
     endD: "",
   });
+  const [edSubmit, setEdSubmit] = useState(false);
 
   const [workData, setWorkData] = useState({
     jobName: "",
@@ -37,12 +39,19 @@ function App() {
     stateName: "",
     cityName: "",
   });
+  const [workSubmit, setWorkSubmit] = useState(false);
 
   return (
     <div className="appContainer">
-      <InfoContext.Provider value={{ infoData, setInfoData }}>
-        <WorkContext.Provider value={{ workData, setWorkData }}>
-          <EducationContext.Provider value={{ edData, setEdData }}>
+      <InfoContext.Provider
+        value={{ infoData, setInfoData, infoSubmit, setInfoSubmit }}
+      >
+        <WorkContext.Provider
+          value={{ workData, setWorkData, workSubmit, setWorkSubmit }}
+        >
+          <EducationContext.Provider
+            value={{ edData, setEdData, edSubmit, setEdSubmit }}
+          >
             <Logo className="logo" />
             <div className="contentContainer">
               <Controls id="controls" />

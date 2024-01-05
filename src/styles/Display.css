@@ -9,14 +9,15 @@
 /* The code here covers the info section */
 .displayScreen > .infoSection {
     height: fit-content;
-    background-color: rgb(0, 139, 139);
+    min-height: 25%;
+    /* background-color: rgb(0, 139, 139); */
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
+    padding: 50px;
 }
 
 .infoSection > p {

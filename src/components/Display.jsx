@@ -6,9 +6,9 @@ import { EducationContext } from "../contexts/EducationContext";
 import { WorkContext } from "../contexts/WorkContext";
 
 const Display = () => {
-  const { infoData } = useContext(InfoContext);
-  const { edData } = useContext(EducationContext);
-  const { workData } = useContext(WorkContext);
+  const { infoData, infoSubmit } = useContext(InfoContext);
+  const { edData, edSubmit } = useContext(EducationContext);
+  const { workData, workSubmit } = useContext(WorkContext);
 
   const formatDate = (dateString) => {
     const options = { month: "short" };
@@ -19,83 +19,71 @@ const Display = () => {
 
   return (
     <div className="displayScreen">
+      {/* Info Section */}
       <div className="infoSection">
-        <p>{infoData.fullName ? infoData.fullName : "John Smith"}</p>
-        <div className="contactInfo">
-          <p>{infoData.email ? infoData.email : "smithj@usc.edu"}</p>
-          <p>{infoData.phone ? infoData.phone : "425-901-2003"}</p>
-        </div>
+        {infoSubmit && (
+          <>
+            <p>{infoData.fullName}</p>
+            <div className="contactInfo">
+              <p>{infoData.email}</p>
+              <p>{infoData.phone}</p>
+            </div>
+          </>
+        )}
       </div>
+
+      {/* Education Section */}
       <div className="educationSection">
-        <div className="sectionName">
-          <p>Education</p>
-          <hr className="rounded"></hr>
-        </div>
+        {edSubmit && (
+          <>
+            <div className="sectionName">
+              <p>Education</p>
+              <hr className="rounded"></hr>
+            </div>
 
-        <div className="sectionContent">
-          <div className="leftContent">
-            <p id="schoolName">
-              {edData.schoolName
-                ? edData.schoolName
-                : "University of Southern California"}
-            </p>
-            <p id="degreeName">
-              {edData.degType
-                ? edData.degType
-                : "Bachelors of Science: Computer Science"}
-            </p>
-          </div>
-          <div className="rightContent">
-            <p>
-              {edData.startD && edData.endD
-                ? `${formatDate(edData.startD)} - ${formatDate(edData.endD)}`
-                : "8/2020 - present"}
-            </p>
-            <p>
-              {edData.cityName && edData.stateName
-                ? `${edData.cityName}, ${edData.stateName}`
-                : "Los Angeles, CA"}
-            </p>
-          </div>
-        </div>
+            <div className="sectionContent">
+              <div className="leftContent">
+                <p id="schoolName">{edData.schoolName}</p>
+                <p id="degreeName">{edData.degType}</p>
+              </div>
+
+              <div className="rightContent">
+                <p>
+                  {`${formatDate(edData.startD)} - ${formatDate(edData.endD)}`}
+                </p>
+                <p>{`${edData.cityName}, ${edData.stateName}`}</p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
-      <div className="workSection">
-        <div className="sectionName">
-          <p>Work Experience</p>
-          <hr className="rounded"></hr>
-        </div>
 
-        <div className="sectionContent">
-          <div className="leftContent">
-            <p id="jobName">
-              {workData.jobName
-                ? workData.jobName
-                : "USC Ecological Data Science"}
-            </p>
-            <p id="jobTitle">
-              {workData.company ? workData.company : "Undergraduate Research"}
-            </p>
-            <p id="jobDescription">
-              {workData.jobDescription
-                ? workData.jobDescription
-                : "Something about your job...."}
-            </p>
-          </div>
-          <div className="rightContent">
-            <p>
-              {workData.startD && workData.endD
-                ? `${formatDate(workData.startD)} - ${formatDate(
+      {/* Work Section */}
+      <div className="workSection">
+        {workSubmit && (
+          <>
+            <div className="sectionName">
+              <p>Work Experience</p>
+              <hr className="rounded"></hr>
+            </div>
+
+            <div className="sectionContent">
+              <div className="leftContent">
+                <p id="jobName">{workData.jobName}</p>
+                <p id="jobTitle">{workData.company}</p>
+                <p id="jobDescription">{workData.jobDescription}</p>
+              </div>
+              <div className="rightContent">
+                <p>
+                  {`${formatDate(workData.startD)} - ${formatDate(
                     workData.endD
-                  )}`
-                : "8/2020 - present"}
-            </p>
-            <p>
-              {edData.cityName && edData.stateName
-                ? `${edData.cityName}, ${edData.stateName}`
-                : "Los Angeles, CA"}
-            </p>
-          </div>
-        </div>
+                  )}`}
+                </p>
+                <p>{`${workData.cityName}, ${workData.stateName}`}</p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

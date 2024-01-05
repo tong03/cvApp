@@ -4,23 +4,25 @@ import { useState, useContext } from "react";
 import { WorkContext } from "../contexts/WorkContext";
 
 const Work = () => {
-  const { workData, setWorkData } = useContext(WorkContext);
+  const { workData, setWorkData, workSubmit, setWorkSubmit } =
+    useContext(WorkContext);
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newWorkData = {
-      jobName: e.target.elements.degType.value,
-      company: e.target.elements.schoolName.value,
+      jobName: e.target.elements.jobName.value,
+      company: e.target.elements.company.value,
       startD: e.target.elements.startD.value,
       endD: e.target.elements.endD.value,
       jobDescription: e.target.elements.jobDescription.value,
-      stateName: e.target.elements.stateName.value,
-      cityName: e.target.elements.cityName.value,
+      stateName: e.target.elements.state.value,
+      cityName: e.target.elements.city.value,
     };
 
     setWorkData(newWorkData);
+    setWorkSubmit(true);
   };
 
   return (
@@ -48,8 +50,8 @@ const Work = () => {
         <label htmlFor="city">City</label>
         <input id="city" type="text" placeholder="City"></input>
 
-        <label htmlFor="tate">State</label>
-        <input id="State" type="text" placeholder="State"></input>
+        <label htmlFor="state">State</label>
+        <input id="state" type="text" placeholder="State"></input>
 
         <div className="duration">
           <div className="startDate">

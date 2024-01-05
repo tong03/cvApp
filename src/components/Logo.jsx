@@ -7,10 +7,11 @@ const Logo = () => {
       <div className="logo">
         <h2>
           <p>CV</p>
+          <p>Creator</p>
           <p>Application</p>
         </h2>
 
-        <p>@weathersnow &copy;</p>
+        <p>@tong03 &copy;</p>
       </div>
     </>
   );
