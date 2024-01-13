@@ -7,6 +7,7 @@ const Info = () => {
   const { infoData, setInfoData, infoSubmit, setInfoSubmit } =
     useContext(InfoContext);
   const [open, setOpen] = useState(false);
+  const [displayedInfo, setDisplayedInfo] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ const Info = () => {
 
     setInfoData(newInfoData);
     setInfoSubmit(true);
+    setDisplayedInfo(true);
   };
 
   return (
@@ -70,6 +72,20 @@ const Info = () => {
           Save
         </button>
       </form>
+
+      {infoSubmit && displayedInfo && <hr className="roundEdit"></hr>}
+      {infoSubmit && displayedInfo && (
+        <div className="editContainer">
+          <div className="displayedInfo">
+            <p>Name: {infoData.fullName}</p>
+            <p>Email: {infoData.email}</p>
+            <p>Phone: {infoData.phone}</p>
+          </div>
+          <div className="btnContainer">
+            <button className="editBtn">Edit</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
