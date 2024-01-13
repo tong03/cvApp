@@ -7,6 +7,14 @@ const Education = () => {
   const { edData, setEdData, edSubmit, setEdSubmit } =
     useContext(EducationContext);
   const [open, setOpen] = useState(false);
+  const [displayedEd, setDisplayedEd] = useState(false);
+
+  const formatDate = (dateString) => {
+    const options = { month: "short" };
+    const date = new Date(dateString);
+    const formattedMonth = date.toLocaleString("en-US", options);
+    return `${formattedMonth}, ${date.getFullYear()}`;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +30,7 @@ const Education = () => {
 
     setEdData(newEdData);
     setEdSubmit(true);
+    setDisplayedEd(true);
   };
 
   return (
@@ -73,6 +82,24 @@ const Education = () => {
         </div>
         <button onClick={() => setOpen(!open)}>Save</button>
       </form>
+
+      {edSubmit && displayedEd && <hr className="roundEdit"></hr>}
+      {edSubmit && displayedEd && (
+        <div className="editContainer">
+          <div className="displayedEd">
+            <p>Degree: {edData.degType}</p>
+            <p>School: {edData.schoolName}</p>
+            <p>Location: {`${edData.cityName}, ${edData.stateName}`}</p>
+            <p>
+              Duration:{" "}
+              {`${formatDate(edData.startD)} - ${formatDate(edData.endD)}`}
+            </p>
+          </div>
+          <div className="btnContainer">
+            <button className="editBtn">Edit</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

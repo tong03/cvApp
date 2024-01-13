@@ -7,6 +7,14 @@ const Work = () => {
   const { workData, setWorkData, workSubmit, setWorkSubmit } =
     useContext(WorkContext);
   const [open, setOpen] = useState(false);
+  const [displayedWork, setDisplayedWork] = useState(false);
+
+  const formatDate = (dateString) => {
+    const options = { month: "short" };
+    const date = new Date(dateString);
+    const formattedMonth = date.toLocaleString("en-US", options);
+    return `${formattedMonth}, ${date.getFullYear()}`;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +31,7 @@ const Work = () => {
 
     setWorkData(newWorkData);
     setWorkSubmit(true);
+    setDisplayedWork(true);
   };
 
   return (
@@ -80,6 +89,24 @@ const Work = () => {
           Save
         </button>
       </form>
+
+      {workSubmit && displayedWork && <hr className="roundEdit"></hr>}
+      {workSubmit && displayedWork && (
+        <div className="editContainer">
+          <div className="displayedWork">
+            <p>Job: {workData.jobName}</p>
+            <p>Company: {workData.company}</p>
+            <p>Location: {`${workData.cityName}, ${workData.stateName}`}</p>
+            <p>
+              Duration:{" "}
+              {`${formatDate(workData.startD)} - ${formatDate(workData.endD)}`}
+            </p>
+          </div>
+          <div className="btnContainer">
+            <button className="editBtn">Edit</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

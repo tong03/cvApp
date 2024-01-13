@@ -96,3 +96,33 @@ label {
     border: 1px solid rgb(118, 118, 118);
     outline: none;
 }
+
+.editContainer {
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 10px;
+}
+
+.displayedEd > p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editBtn {
+    padding: 10px 25px;
+    border-radius: 1em;
+}
+
+hr.roundEdit {
+    border-top: 5px solid #bbb;
+    border-radius: 5px;
+    margin: 0;
+    margin-top: 5px;
+}

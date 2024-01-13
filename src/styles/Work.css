@@ -108,3 +108,33 @@
     padding: 10px;
     margin-bottom: 10px;
 }
+
+.editContainer {
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 10px;
+}
+
+.displayedWork > p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editBtn {
+    padding: 10px 25px;
+    border-radius: 1em;
+}
+
+hr.roundEdit {
+    border-top: 5px solid #bbb;
+    border-radius: 5px;
+    margin: 0;
+    margin-top: 5px;
+}
