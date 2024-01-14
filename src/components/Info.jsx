@@ -8,6 +8,23 @@ const Info = () => {
     useContext(InfoContext);
   const [open, setOpen] = useState(false);
   const [displayedInfo, setDisplayedInfo] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [localFormValues, setLocalFormValues] = useState({ ...infoData });
+
+  const clearForm = () => {
+    setLocalFormValues({
+      fullName: "",
+      email: "",
+      phone: "",
+    });
+  };
+
+  const handleEdit = () => {
+    setEditMode(true);
+    setOpen(true); // Expand the form when entering edit mode
+    // Set the form fields to the previously entered values
+    setLocalFormValues({ ...infoData });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +38,12 @@ const Info = () => {
     setInfoData(newInfoData);
     setInfoSubmit(true);
     setDisplayedInfo(true);
+
+    if (!editMode) {
+      clearForm(); // Clear the form fields after submission if not in edit mode
+    }
+
+    setEditMode(false); // Exit edit mode after submission
   };
 
   return (
@@ -30,9 +53,13 @@ const Info = () => {
         <button
           onClick={() => {
             setOpen(!open);
+            if (!open) {
+              clearForm(); // Clear the form fields when opening
+              setEditMode(false); // Exit edit mode when opening
+            }
           }}
         >
-          V
+          {open ? "^" : "V"}
         </button>
       </div>
       <form
@@ -45,6 +72,21 @@ const Info = () => {
           id="fName"
           name="fName"
           placeholder="Full Name Here"
+          value={editMode ? infoData.fullName : localFormValues.fullName}
+          onChange={(e) => {
+            const newValue = e.target.value;
+            if (!editMode) {
+              setLocalFormValues((prevValues) => ({
+                ...prevValues,
+                fullName: newValue,
+              }));
+            } else {
+              setInfoData((prevData) => ({
+                ...prevData,
+                fullName: newValue,
+              }));
+            }
+          }}
         ></input>
 
         <label htmlFor="e-mail">Email</label>
@@ -53,6 +95,21 @@ const Info = () => {
           name="e-mail"
           type="email"
           placeholder="johnsmith@gmail.com"
+          value={editMode ? infoData.email : localFormValues.email}
+          onChange={(e) => {
+            const newValue = e.target.value;
+            if (!editMode) {
+              setLocalFormValues((prevValues) => ({
+                ...prevValues,
+                email: newValue,
+              }));
+            } else {
+              setInfoData((prevData) => ({
+                ...prevData,
+                email: newValue,
+              }));
+            }
+          }}
         ></input>
 
         <label htmlFor="phoneNum">Phone Number</label>
@@ -61,6 +118,21 @@ const Info = () => {
           name="phoneNum"
           type="phone"
           placeholder="xxx-xxx-xxxx"
+          value={editMode ? infoData.phone : localFormValues.phone}
+          onChange={(e) => {
+            const newValue = e.target.value;
+            if (!editMode) {
+              setLocalFormValues((prevValues) => ({
+                ...prevValues,
+                phone: newValue,
+              }));
+            } else {
+              setInfoData((prevData) => ({
+                ...prevData,
+                phone: newValue,
+              }));
+            }
+          }}
         ></input>
 
         <button
@@ -82,7 +154,9 @@ const Info = () => {
             <p>Phone: {infoData.phone}</p>
           </div>
           <div className="btnContainer">
-            <button className="editBtn">Edit</button>
+            <button className="editBtn" onClick={handleEdit}>
+              Edit
+            </button>
           </div>
         </div>
       )}

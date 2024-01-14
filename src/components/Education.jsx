@@ -8,6 +8,26 @@ const Education = () => {
     useContext(EducationContext);
   const [open, setOpen] = useState(false);
   const [displayedEd, setDisplayedEd] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [localFormValues, setLocalFormValues] = useState({ ...edData });
+
+  const clearForm = () => {
+    setLocalFormValues({
+      degType: "",
+      schoolName: "",
+      cityName: "",
+      stateName: "",
+      startD: "",
+      endD: "",
+    });
+  };
+
+  const handleEdit = () => {
+    setEditMode(true);
+    setOpen(true); // Expand the form when entering edit mode
+    // Set the form fields to the previously entered values
+    setLocalFormValues({ ...edData });
+  };
 
   const formatDate = (dateString) => {
     const options = { month: "short" };
@@ -31,6 +51,12 @@ const Education = () => {
     setEdData(newEdData);
     setEdSubmit(true);
     setDisplayedEd(true);
+
+    if (!editMode) {
+      clearForm();
+    }
+
+    setEditMode(false);
   };
 
   return (
@@ -40,9 +66,13 @@ const Education = () => {
         <button
           onClick={() => {
             setOpen(!open);
+            if (!open) {
+              clearForm(); // Clear the form fields when opening
+              setEditMode(false); // Exit edit mode when opening
+            }
           }}
         >
-          V
+          {open ? "^" : "V"}
         </button>
       </div>
       <form
@@ -54,6 +84,21 @@ const Education = () => {
           id="degType"
           type="text"
           placeholder="Degree/Field of Study"
+          value={editMode ? edData.degType : localFormValues.degType}
+          onChange={(e) => {
+            const newValue = e.target.value;
+            if (!editMode) {
+              setLocalFormValues((prevValues) => ({
+                ...prevValues,
+                degType: newValue,
+              }));
+            } else {
+              setEdData((prevData) => ({
+                ...prevData,
+                degType: newValue,
+              }));
+            }
+          }}
         ></input>
 
         <label htmlFor="schoolName">School</label>
@@ -61,23 +106,112 @@ const Education = () => {
           id="schoolName"
           type="text"
           placeholder="School/University"
+          value={editMode ? edData.schoolName : localFormValues.schoolName}
+          onChange={(e) => {
+            const newValue = e.target.value;
+            if (!editMode) {
+              setLocalFormValues((prevValues) => ({
+                ...prevValues,
+                schoolName: newValue,
+              }));
+            } else {
+              setEdData((prevData) => ({
+                ...prevData,
+                schoolName: newValue,
+              }));
+            }
+          }}
         ></input>
 
         <label htmlFor="cityName">City</label>
-        <input id="cityName" type="text" placeholder="City"></input>
+        <input
+          id="cityName"
+          type="text"
+          placeholder="City"
+          value={editMode ? edData.cityName : localFormValues.cityName}
+          onChange={(e) => {
+            const newValue = e.target.value;
+            if (!editMode) {
+              setLocalFormValues((prevValues) => ({
+                ...prevValues,
+                cityName: newValue,
+              }));
+            } else {
+              setEdData((prevData) => ({
+                ...prevData,
+                cityName: newValue,
+              }));
+            }
+          }}
+        ></input>
 
         <label htmlFor="stateName">State</label>
-        <input id="stateName" type="text" placeholder="State"></input>
+        <input
+          id="stateName"
+          type="text"
+          placeholder="State"
+          value={editMode ? edData.stateName : localFormValues.stateName}
+          onChange={(e) => {
+            const newValue = e.target.value;
+            if (!editMode) {
+              setLocalFormValues((prevValues) => ({
+                ...prevValues,
+                stateName: newValue,
+              }));
+            } else {
+              setEdData((prevData) => ({
+                ...prevData,
+                stateName: newValue,
+              }));
+            }
+          }}
+        ></input>
 
         <div className="duration">
           <div className="startDate">
             <label htmlFor="startD">Start Date</label>
-            <input id="startD" type="date"></input>
+            <input
+              id="startD"
+              type="date"
+              value={editMode ? edData.startD : localFormValues.startD}
+              onChange={(e) => {
+                const newValue = e.target.value;
+                if (!editMode) {
+                  setLocalFormValues((prevValues) => ({
+                    ...prevValues,
+                    startD: newValue,
+                  }));
+                } else {
+                  setEdData((prevData) => ({
+                    ...prevData,
+                    startD: newValue,
+                  }));
+                }
+              }}
+            ></input>
           </div>
 
           <div className="endDate">
             <label htmlFor="endD">End Date</label>
-            <input id="endD" type="date"></input>
+            <input
+              id="endD"
+              type="date"
+              value={editMode ? edData.endD : localFormValues.endD}
+              onChange={(e) => {
+                const newValue = e.target.value;
+                if (!editMode) {
+                  setLocalFormValues((prevValues) => ({
+                    ...prevValues,
+                    endD: newValue,
+                  }));
+                } else {
+                  setEdData((prevData) => ({
+                    ...prevData,
+                    endD: newValue,
+                  }));
+                }
+              }}
+            ></input>
           </div>
         </div>
         <button onClick={() => setOpen(!open)}>Save</button>
@@ -96,7 +230,9 @@ const Education = () => {
             </p>
           </div>
           <div className="btnContainer">
-            <button className="editBtn">Edit</button>
+            <button className="editBtn" onClick={handleEdit}>
+              Edit
+            </button>
           </div>
         </div>
       )}

@@ -74,7 +74,7 @@ const Work = () => {
             }
           }}
         >
-          V
+          {open ? "^" : "V"}
         </button>
       </div>
       <form
