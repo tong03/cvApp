@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/Work.css";
 import { useState, useContext } from "react";
 import { WorkContext } from "../contexts/WorkContext";
+import Icon from "@mdi/react";
+import { mdiBriefcase } from "@mdi/js";
 
 const Work = () => {
   const { workData, setWorkData, workSubmit, setWorkSubmit } =
@@ -64,7 +66,10 @@ const Work = () => {
   return (
     <div className="workContainer">
       <div className="workHead">
-        <p>Work Experience</p>
+        <div className="workIcon">
+          <Icon path={mdiBriefcase} size={1.5} />
+          <p className="title">Work Experience</p>
+        </div>
         <button
           onClick={() => {
             setOpen(!open);

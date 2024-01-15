@@ -19,10 +19,15 @@
     margin-bottom: 5px;
 }
 
-.edHead > p {
+.title {
     margin: 0;
     font-size: 25px;
-    font-weight: bolder;
+    font-weight: bolder; 
+}
+
+.edIcon {
+    display: flex;
+    gap: 10px;
 }
 
 .edForm.inactive {

@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/Info.css";
 import { useState, useContext } from "react";
 import { InfoContext } from "../contexts/infoContext.jsx";
+import Icon from "@mdi/react";
+import { mdiAccount } from "@mdi/js";
 
 const Info = () => {
   const { infoData, setInfoData, infoSubmit, setInfoSubmit } =
@@ -49,7 +51,10 @@ const Info = () => {
   return (
     <div className="infoContainer">
       <div className="infoHead">
-        <p>General Information</p>
+        <div className="infoIcon">
+          <Icon path={mdiAccount} size={1.5} />
+          <p className="title">General Information</p>
+        </div>
         <button
           onClick={() => {
             setOpen(!open);

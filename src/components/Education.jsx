@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/Education.css";
 import { useState, useContext } from "react";
 import { EducationContext } from "../contexts/EducationContext";
+import Icon from "@mdi/react";
+import { mdiSchool } from "@mdi/js";
 
 const Education = () => {
   const { edData, setEdData, edSubmit, setEdSubmit } =
@@ -62,7 +64,10 @@ const Education = () => {
   return (
     <div className="edContainer">
       <div className="edHead">
-        <p>Education</p>
+        <div className="edIcon">
+          <Icon path={mdiSchool} size={1.5} />
+          <p className="title">Education</p>
+        </div>
         <button
           onClick={() => {
             setOpen(!open);

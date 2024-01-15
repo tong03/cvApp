@@ -19,10 +19,15 @@
     margin-bottom: 5px;
 }
 
-.workHead > p {
+.title {
     margin: 0;
     font-size: 25px;
-    font-weight: bolder;
+    font-weight: bolder; 
+}
+
+.workIcon {
+    display: flex;
+    gap: 10px;
 }
 
 .workForm.inactive {

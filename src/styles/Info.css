@@ -19,10 +19,15 @@
     margin-bottom: 5px;
 }
 
-.infoHead > p {
+.title {
     margin: 0;
     font-size: 25px;
-    font-weight: bolder;
+    font-weight: bolder; 
+}
+
+.infoIcon {
+    display: flex;
+    gap: 10px;
 }
 
 .infoForm.inactive {
