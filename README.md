@@ -2,6 +2,8 @@
 
 This project aims to create a dynamic CV Builder by appying React concepts into practice.
 
+![Alt Text](https://github.com/tong03/cvApp/blob/main/cvApp%20demo.png?raw=true)
+
 ## React Context API Usage
 
 This project leverages the power of React Context API to manage and share **global state** across various components efficiently. The Context API eliminates the need for prop drilling by allowing components to access shared data without passing it through intermediary components.
