@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Info.css";
 import { useState, useContext } from "react";
-import { InfoContext } from "../contexts/infoContext.jsx";
+import { InfoContext } from "../contexts/InfoContext.jsx";
 import Icon from "@mdi/react";
 import { mdiAccount } from "@mdi/js";
 
